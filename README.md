@@ -28,5 +28,5 @@ De dentro do container, executar o comando:
 ```bash
 python -m unittest <caminho_do_teste>
 # exemplo:
-# python -m unittest category.domain.tests.test_entities
+# python -m unittest category.tests.unit.domain.test_unit_entities
 ```

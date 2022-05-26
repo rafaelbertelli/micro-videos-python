@@ -1,4 +1,4 @@
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from datetime import datetime
 from typing import Optional
 
@@ -9,5 +9,9 @@ class Category:
     name:str
     description:Optional[str] = None
     is_active:Optional[bool] = True
-    created_at:Optional[datetime] = datetime.now()
+    created_at:Optional[datetime] = field(default_factory=lambda: datetime.now())
     
+    
+print(Category("filme 1"))
+print(Category("filme 2"))
+print(Category("filme 3"))
