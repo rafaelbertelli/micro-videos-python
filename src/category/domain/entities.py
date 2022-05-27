@@ -1,11 +1,13 @@
+import uuid
 from dataclasses import dataclass, field
 from datetime import datetime
 from typing import Optional
 
 
-@dataclass
+@dataclass(kw_only=True)
 class Category:
 
+    uuid:uuid.UUID = field(default_factory=lambda: uuid.uuid4())
     name:str
     description:Optional[str] = None
     is_active:Optional[bool] = True
