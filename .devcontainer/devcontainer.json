@@ -61,7 +61,8 @@
     "esbenp.prettier-vscode",
     "sonarsource.sonarlint-vscode",
     "davidanson.vscode-markdownlint",
-    "eamodio.gitlens"
+    "eamodio.gitlens",
+    "ms-vscode-remote.vscode-remote-extensionpack"
   ],
 
   // Use 'forwardPorts' to make a list of ports inside the container available locally.
