@@ -1,0 +1,81 @@
+// For format details, see https://aka.ms/devcontainer.json. For config options, see the README at:
+// https://github.com/microsoft/vscode-dev-containers/tree/v0.234.0/containers/docker-existing-docker-compose
+// If you want to run as a non-root user in the container, see .devcontainer/docker-compose.yml.
+{
+  "name": "Micro Video Python",
+
+  // Update the 'dockerComposeFile' list if you have more compose files or use different names.
+  // The .devcontainer/docker-compose.yml file contains any overrides you need/want to make.
+  "dockerComposeFile": ["../docker-compose.yaml", "docker-compose.yml"],
+
+  // The 'service' property is the name of the service for the container that VS Code should
+  // use. Update this value and .devcontainer/docker-compose.yml to the real service name.
+  "service": "app",
+
+  // The optional 'workspaceFolder' property is the path VS Code should open by default when
+  // connected. This is typically a file mount in .devcontainer/docker-compose.yml
+  "workspaceFolder": "/home/python/app",
+
+  // Set *default* container specific settings.json values on container create.
+  "settings": {
+    "peacock.color": "#0c4b33",
+    "workbench.colorCustomizations": {
+      "activityBar.activeBackground": "#137751",
+      "activityBar.activeBorder": "#ca91ed",
+      "activityBar.background": "#137751",
+      "activityBar.foreground": "#e7e7e7",
+      "activityBar.inactiveForeground": "#e7e7e799",
+      "activityBarBadge.background": "#ca91ed",
+      "activityBarBadge.foreground": "#15202b",
+      "sash.hoverBorder": "#137751",
+      "statusBar.background": "#0c4b33",
+      "statusBar.foreground": "#e7e7e7",
+      "statusBarItem.hoverBackground": "#137751",
+      "statusBarItem.remoteBackground": "#0c4b33",
+      "statusBarItem.remoteForeground": "#e7e7e7",
+      "titleBar.activeBackground": "#0c4b33",
+      "titleBar.activeForeground": "#e7e7e7",
+      "titleBar.inactiveBackground": "#0c4b3399",
+      "titleBar.inactiveForeground": "#e7e7e799"
+    },
+    "peacock.remoteColor": "#0c4b33",
+    "terminal.integrated.profiles.linux": {
+      "bash": {
+        "path": "bash",
+        "icon": "terminal-bash"
+      },
+      "zsh": {
+        "path": "zsh"
+      }
+    }
+  },
+
+  // Add the IDs of extensions you want installed when the container is created.
+  "extensions": [
+    "batisteo.vscode-django",
+    "magicstack.magicpython",
+    "ms-python.vscode-pylance",
+    "ms-python.python",
+    "kevinrose.vsc-python-indent",
+    "sourcery.sourcery",
+    "esbenp.prettier-vscode",
+    "sonarsource.sonarlint-vscode",
+    "davidanson.vscode-markdownlint",
+    "eamodio.gitlens"
+  ],
+
+  // Use 'forwardPorts' to make a list of ports inside the container available locally.
+  // "forwardPorts": [],
+
+  // Uncomment the next line if you want start specific services in your Docker Compose config.
+  // "runServices": [],
+
+  // Uncomment the next line if you want to keep your containers running after VS Code shuts down.
+  // "shutdownAction": "none",
+
+  // Uncomment the next line to run commands after the container is created - for example installing curl.
+  // "postCreateCommand": "apt-get update && apt-get install -y curl",
+
+  // Uncomment to connect as a non-root user if you've added one. See https://aka.ms/vscode-remote/containers/non-root.
+  "remoteUser": "python"
+}
