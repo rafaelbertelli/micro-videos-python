@@ -4,10 +4,10 @@ from datetime import datetime
 from typing import Optional
 
 
-@dataclass(kw_only=True)
+@dataclass(kw_only=True, frozen=True)
 class Category:
 
-    uuid:uuid.UUID = field(default_factory=lambda: uuid.uuid4())
+    id:Optional[uuid.UUID] = field(default_factory=lambda: uuid.uuid4())
     name:str
     description:Optional[str] = None
     is_active:Optional[bool] = True
