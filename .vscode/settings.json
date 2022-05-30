@@ -22,8 +22,8 @@
   "peacock.remoteColor": "#0c4b33",
   "python.linting.pylintEnabled": true,
   "python.linting.enabled": true,
-  // "python.linting.pylintPath": "/usr/local/bin/pylint",
-  "python.linting.pylintPath": "pylint",
+  "python.linting.pylintPath": "/usr/local/bin/pylint",
+  // "python.linting.pylintPath": "pylint",
   "python.linting.pylintArgs": ["--disable=C0111"],
   "python.autoComplete.extraPaths": [
     "${workspaceFolder}/__pypackages__/3.10/lib"
