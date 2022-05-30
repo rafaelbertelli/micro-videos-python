@@ -1,3 +1,4 @@
+import abc
 import unittest
 import uuid
 from dataclasses import FrozenInstanceError, dataclass, is_dataclass
@@ -8,11 +9,47 @@ from __seedwork.domain.exceptions import InvalidUuidException
 from __seedwork.domain.value_objects import UniqueEntityId, ValueObject
 
 
+@dataclass(frozen=True)
+class StubOnePropVO(ValueObject):
+    prop:str
+
+
+@dataclass(frozen=True)
+class StubTwoPropVO(ValueObject):
+    prop1:str
+    prop2:str
+
+
 class TestUnitValueObject(unittest.TestCase):
     # python -m unittest __seedwork.tests.unit.domain.test_unit_value_object.TestUnitValueObject
 
     def test_if_it_is_a_dataclass(self):
         self.assertTrue(is_dataclass(ValueObject))
+
+    def test_if_it_is_an_abstract_class(self):
+        self.assertIsInstance(ValueObject(), abc.ABC)
+
+    def test_init_props(self):
+        vo1 = StubOnePropVO(prop="value")
+        self.assertEqual(vo1.prop, "value")
+
+        vo2 = StubTwoPropVO(prop1="value1", prop2="value2")
+        self.assertEqual(vo2.prop1, "value1")
+        self.assertEqual(vo2.prop2, "value2")
+
+    def test_convert_to_str(self):
+        vo1 = StubOnePropVO(prop="value")
+        self.assertEqual(vo1.prop, str(vo1))
+
+        vo2 = StubTwoPropVO(prop1="value1", prop2="value2")
+        self.assertEqual('{"prop1": "value1", "prop2": "value2"}', str(vo2))
+
+    def test_immutable_uuid(self):
+        with self.assertRaises(FrozenInstanceError) as assert_error:
+            value_object = StubOnePropVO(prop="value")
+            value_object.prop = "fake prop"
+
+        self.assertEqual(assert_error.exception.args[0], "cannot assign to field 'prop'")
 
 
 class TestUnitUniqueEnityId(unittest.TestCase):
