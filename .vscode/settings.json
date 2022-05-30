@@ -20,5 +20,16 @@
     "titleBar.inactiveForeground": "#e7e7e799"
   },
   "peacock.remoteColor": "#0c4b33",
-  "terminal.integrated.defaultProfile.linux": "zsh"
+  "python.linting.pylintEnabled": true,
+  "python.linting.enabled": true,
+  // "python.linting.pylintPath": "/usr/local/bin/pylint",
+  "python.linting.pylintPath": "pylint",
+  "python.linting.pylintArgs": ["--disable=C0111"],
+  "python.autoComplete.extraPaths": [
+    "${workspaceFolder}/__pypackages__/3.10/lib"
+  ],
+  "python.analysis.extraPaths": ["${workspaceFolder}/__pypackages__/3.10/lib"],
+  "python.testing.pytestArgs": ["src", "--ignore", "__pypackages__", "-s"],
+  "python.testing.unittestEnabled": false,
+  "python.testing.pytestEnabled": true
 }
