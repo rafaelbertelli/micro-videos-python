@@ -6,6 +6,7 @@ from category.domain.entities import Category
 
 
 class TestCategoryUnitEntity(unittest.TestCase):
+    # python -m unittest category.tests.unit.domain.test_unit_entities.TestCategoryUnitEntity
 
     def test_if_it_is_a_dataclass(self):
         self.assertTrue(Category)
@@ -19,6 +20,7 @@ class TestCategoryUnitEntity(unittest.TestCase):
         category = Category(
             name=name, description=description, is_active=is_active, created_at=created_at)
 
+        self.assertIsNotNone(category.id)
         self.assertEqual(category.name, name)
         self.assertEqual(category.description, description)
         self.assertEqual(category.is_active, is_active)
