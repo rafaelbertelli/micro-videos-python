@@ -1,4 +1,5 @@
 {
+  "peacock.color": "#0c4b33",
   "workbench.colorCustomizations": {
     "activityBar.activeBackground": "#137751",
     "activityBar.activeBorder": "#ca91ed",
@@ -18,5 +19,6 @@
     "titleBar.inactiveBackground": "#0c4b3399",
     "titleBar.inactiveForeground": "#e7e7e799"
   },
-  "peacock.color": "#0c4b33"
+  "peacock.remoteColor": "#0c4b33",
+  "terminal.integrated.defaultProfile.linux": "zsh"
 }

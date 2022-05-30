@@ -22,28 +22,8 @@
 
   // Set *default* container specific settings.json values on container create.
   "settings": {
-    "peacock.color": "#0c4b33",
-    "workbench.colorCustomizations": {
-      "activityBar.activeBackground": "#137751",
-      "activityBar.activeBorder": "#ca91ed",
-      "activityBar.background": "#137751",
-      "activityBar.foreground": "#e7e7e7",
-      "activityBar.inactiveForeground": "#e7e7e799",
-      "activityBarBadge.background": "#ca91ed",
-      "activityBarBadge.foreground": "#15202b",
-      "sash.hoverBorder": "#137751",
-      "statusBar.background": "#0c4b33",
-      "statusBar.foreground": "#e7e7e7",
-      "statusBarItem.hoverBackground": "#137751",
-      "statusBarItem.remoteBackground": "#0c4b33",
-      "statusBarItem.remoteForeground": "#e7e7e7",
-      "titleBar.activeBackground": "#0c4b33",
-      "titleBar.activeForeground": "#e7e7e7",
-      "titleBar.inactiveBackground": "#0c4b3399",
-      "titleBar.inactiveForeground": "#e7e7e799"
-    },
-    "peacock.remoteColor": "#0c4b33",
-    "terminal.integrated.defaultProfile.linux": "zsh"
+    "terminal.integrated.defaultProfile.linux": "zsh",
+    "python.pythonPath": "/usr/local/bin/python"
   },
 
   // Add the IDs of extensions you want installed when the container is created.
