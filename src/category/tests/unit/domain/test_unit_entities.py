@@ -1,5 +1,7 @@
+# pylint: disable=unexpected-keyword-arg
+
 import unittest
-from dataclasses import FrozenInstanceError, is_dataclass
+from dataclasses import FrozenInstanceError
 from datetime import datetime
 
 from category.domain.entities import Category
@@ -12,13 +14,13 @@ class TestCategoryUnitEntity(unittest.TestCase):
         self.assertTrue(Category)
 
     def test_constructor_with_params_filled(self):
-        name        = 'name'
+        name = 'name'
         description = 'description'
-        is_active   = False
-        created_at  = datetime.now()
+        is_active = False
+        created_at = datetime.now()
 
-        category = Category(
-            name=name, description=description, is_active=is_active, created_at=created_at)
+        category = Category(name=name, description=description,
+                            is_active=is_active, created_at=created_at)
 
         self.assertIsNotNone(category.id)
         self.assertEqual(category.name, name)
@@ -38,11 +40,13 @@ class TestCategoryUnitEntity(unittest.TestCase):
         category1 = Category(name="name")
         category2 = Category(name="name")
 
-        self.assertNotEqual(category1.created_at.timestamp(), category2.created_at.timestamp())
+        self.assertNotEqual(category1.created_at.timestamp(),
+                            category2.created_at.timestamp())
 
     def test_immutable_uuid(self):
         with self.assertRaises(FrozenInstanceError) as assert_error:
             value_object = Category(name="name")
             value_object.name = "fake name"
 
-        self.assertEqual(assert_error.exception.args[0], "cannot assign to field 'name'")
+        self.assertEqual(
+            assert_error.exception.args[0], "cannot assign to field 'name'")

@@ -13,13 +13,13 @@ class ValueObject(abc.ABC):
 
         return str(getattr(self, fields_name[0])) \
             if len(fields_name) == 1 \
-            else json.dumps({ field_name: getattr(self, field_name) for field_name in fields_name })
+            else json.dumps({field_name: getattr(self, field_name) for field_name in fields_name})
 
 
 @dataclass(frozen=True)
 class UniqueEntityId(ValueObject):
 
-    id:str = field(default_factory=lambda: str(uuid.uuid4()))
+    id: str = field(default_factory=lambda: str(uuid.uuid4()))
 
     def __post_init__(self):
         object.__setattr__(self, 'id', str(self.id))

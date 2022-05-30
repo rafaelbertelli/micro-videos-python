@@ -1,23 +1,25 @@
+# pylint: disable=protected-access
+
 import abc
 import unittest
 import uuid
 from dataclasses import FrozenInstanceError, dataclass, is_dataclass
 from unittest.mock import patch
 
-from __seedwork.domain import value_objects
+# from __seedwork.domain import value_objects
 from __seedwork.domain.exceptions import InvalidUuidException
 from __seedwork.domain.value_objects import UniqueEntityId, ValueObject
 
 
 @dataclass(frozen=True)
 class StubOnePropVO(ValueObject):
-    prop:str
+    prop: str
 
 
 @dataclass(frozen=True)
 class StubTwoPropVO(ValueObject):
-    prop1:str
-    prop2:str
+    prop1: str
+    prop2: str
 
 
 class TestUnitValueObject(unittest.TestCase):
@@ -49,7 +51,8 @@ class TestUnitValueObject(unittest.TestCase):
             value_object = StubOnePropVO(prop="value")
             value_object.prop = "fake prop"
 
-        self.assertEqual(assert_error.exception.args[0], "cannot assign to field 'prop'")
+        self.assertEqual(
+            assert_error.exception.args[0], "cannot assign to field 'prop'")
 
 
 class TestUnitUniqueEnityId(unittest.TestCase):
@@ -69,7 +72,8 @@ class TestUnitUniqueEnityId(unittest.TestCase):
                 UniqueEntityId("fake uuid")
 
             mock_validate.assert_called_once()
-            self.assertEqual(assert_error.exception.args[0], "ID must be a valid UUID")
+            self.assertEqual(
+                assert_error.exception.args[0], "ID must be a valid UUID")
 
     def test_should_pass_with_valid_uuid_str(self):
         with patch.object(
@@ -102,7 +106,8 @@ class TestUnitUniqueEnityId(unittest.TestCase):
             value_object = UniqueEntityId()
             value_object.id = "fake uuid"
 
-        self.assertEqual(assert_error.exception.args[0], "cannot assign to field 'id'")
+        self.assertEqual(
+            assert_error.exception.args[0], "cannot assign to field 'id'")
 
     def test_convert_to_string(self):
         unique_enity_id = UniqueEntityId()
@@ -110,5 +115,3 @@ class TestUnitUniqueEnityId(unittest.TestCase):
 
         self.assertIsInstance(unique_enity_id.id, str)
         self.assertEqual(unique_enity_id.id, str(unique_enity_id))
-
-
