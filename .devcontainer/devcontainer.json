@@ -8,7 +8,6 @@
   // The .devcontainer/docker-compose.yml file contains any overrides you need/want to make.
   "dockerComposeFile": [
     "../docker-compose.yaml",
-    "../docker-compose.override.yaml",
     "docker-compose.yml"
   ],
 
@@ -22,7 +21,6 @@
 
   // Set *default* container specific settings.json values on container create.
   "settings": {
-    "terminal.integrated.defaultProfile.linux": "zsh",
     "python.pythonPath": "/usr/local/bin/python"
   },
 
@@ -32,7 +30,6 @@
     "magicstack.magicpython",
     "ms-python.vscode-pylance",
     "ms-python.python",
-    "kevinrose.vsc-python-indent",
     "sourcery.sourcery",
     "esbenp.prettier-vscode",
     "sonarsource.sonarlint-vscode",
@@ -40,7 +37,8 @@
     "eamodio.gitlens",
     "ms-vscode-remote.vscode-remote-extensionpack",
     "editorconfig.editorconfig",
-    "ms-vscode.makefile-tools"
+    "ms-vscode.makefile-tools",
+    "bungcip.better-toml"
   ],
 
   // Use 'forwardPorts' to make a list of ports inside the container available locally.
