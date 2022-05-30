@@ -1,7 +1,7 @@
 FROM python:3.10-slim
 
 RUN apt update && apt install -y --no-install-recommends \
-  default-jre git
+    default-jre git make
 
 RUN useradd -ms /bin/bash python
 USER python
