@@ -23,6 +23,7 @@
   "python.linting.pylintEnabled": true,
   "python.linting.enabled": true,
   "python.linting.pylintPath": "/usr/local/bin/pylint",
+  // "python.linting.pylintPath": "__pypackages__/3.10/bin/pylint",
   // "python.linting.pylintPath": "pylint",
   "python.linting.pylintArgs": ["--disable=C0111"],
   "python.autoComplete.extraPaths": [
@@ -31,5 +32,6 @@
   "python.analysis.extraPaths": ["${workspaceFolder}/__pypackages__/3.10/lib"],
   "python.testing.pytestArgs": ["src", "--ignore", "__pypackages__", "-s"],
   "python.testing.unittestEnabled": false,
-  "python.testing.pytestEnabled": true
+  "python.testing.pytestEnabled": true,
+  "python.pythonPath": "/usr/local/bin/python"
 }
