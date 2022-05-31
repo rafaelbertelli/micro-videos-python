@@ -8,13 +8,13 @@ O projeto pode ser rodado apontando para a máquina local (não recomendado) ou 
 
 ### Docker
 
--   [Docker](https://docs.docker.com/)
--   [Docker Compose](https://docs.docker.com/compose/install/)
+- [Docker](https://docs.docker.com/)
+- [Docker Compose](https://docs.docker.com/compose/install/)
 
 ### VSCode
 
--   [VSCode](https://code.visualstudio.com/Download)
--   [Kit de extensões Remote Container](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.vscode-remote-extensionpack)
+- [VSCode](https://code.visualstudio.com/Download)
+- [Kit de extensões Remote Container](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.vscode-remote-extensionpack)
 
 ## Instalação e execução do projeto
 
