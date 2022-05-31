@@ -1,5 +1,18 @@
 {
+  "python.linting.pylintEnabled": true,
+  "python.linting.enabled": true,
+  "python.linting.pylintPath": "pylint",
+  "python.linting.pylintArgs": ["--disable=C0111"],
+  "python.autoComplete.extraPaths": [
+    "${workspaceFolder}/__pypackages__/3.10/lib"
+  ],
+  "python.analysis.extraPaths": ["${workspaceFolder}/__pypackages__/3.10/lib"],
+  "python.testing.pytestArgs": ["src", "--ignore", "__pypackages__", "-s"],
+  "python.testing.unittestEnabled": false,
+  "python.testing.pytestEnabled": true,
+
   "peacock.color": "#0c4b33",
+  "peacock.remoteColor": "#0c4b33",
   "workbench.colorCustomizations": {
     "activityBar.activeBackground": "#137751",
     "activityBar.activeBorder": "#ca91ed",
@@ -19,20 +32,6 @@
     "titleBar.inactiveBackground": "#0c4b3399",
     "titleBar.inactiveForeground": "#e7e7e799"
   },
-  "peacock.remoteColor": "#0c4b33",
-  "python.linting.enabled": true,
-  "python.linting.pylintEnabled": true,
-  "python.linting.pylintPath": "/usr/local/bin/pylint",
-  // "python.linting.pylintPath": "__pypackages__/3.10/bin/pylint",
-  // "python.linting.pylintPath": "pylint",
-  // "python.linting.pylintArgs": ["--disable=C0111"],
-  "python.autoComplete.extraPaths": [
-    "${workspaceFolder}/__pypackages__/3.10/lib"
-  ],
-  "python.analysis.extraPaths": ["${workspaceFolder}/__pypackages__/3.10/lib"],
-  "python.testing.unittestEnabled": true,
-  "python.testing.unittestArgs": ["-v", "-s", "./src", "-p", "test_*.py"],
-  "python.pythonPath": "/usr/local/bin/python",
 
   "[dockercompose]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
