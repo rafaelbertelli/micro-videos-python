@@ -50,3 +50,27 @@ class TestCategoryUnitEntity(unittest.TestCase):
 
         self.assertEqual(
             assert_error.exception.args[0], "cannot assign to field 'name'")
+
+    def test_category_update_name(self):
+        category = Category(name="name")
+        category.update(name="new name")
+
+        self.assertEqual(category.name, "new name")
+
+    def test_category_update_description(self):
+        category = Category(name="name", description="description")
+        category.update(name="name", description="new description")
+
+        self.assertEqual(category.description, "new description")
+
+    def test_category_activate(self):
+        category = Category(name="name", is_active=False)
+        category.activate()
+
+        self.assertTrue(category.is_active)
+
+    def test_category_deactivate(self):
+        category = Category(name="name", is_active=True)
+        category.deactivate()
+
+        self.assertFalse(category.is_active)
