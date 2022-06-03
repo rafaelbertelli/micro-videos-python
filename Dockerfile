@@ -1,7 +1,7 @@
 FROM python:3.10.4-slim
 
 RUN apt update && apt install -y --no-install-recommends \
-    default-jre git make curl wget
+    default-jre git make curl wget openssh-client
 
 RUN useradd -ms /bin/bash python
 
