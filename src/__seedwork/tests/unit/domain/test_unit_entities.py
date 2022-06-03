@@ -2,7 +2,7 @@ import unittest
 import uuid
 from abc import ABC
 from dataclasses import dataclass, is_dataclass
-from typing import Optional
+from typing import Any, Optional
 from uuid import UUID
 
 from __seedwork.domain.entities import Entity
@@ -13,6 +13,9 @@ from __seedwork.domain.value_objects import UniqueEntityId
 class StubEntity(Entity):
     prop1: Optional[str] = None
     prop2: Optional[str] = None
+
+    def update(self, field: str, value: Any):
+        self._set(field, value)
 
 
 class TestUnitEntity(unittest.TestCase):
@@ -71,3 +74,12 @@ class TestUnitEntity(unittest.TestCase):
         entity_id_5 = uuid.uuid4()
         entity_5 = StubEntity(unique_entity_id=entity_id_5)
         self.assertEqual(entity_5.id, str(entity_id_5))
+
+    def test_set_property(self):
+        entity = StubEntity()
+
+        entity.update("prop1", "aaa")
+        self.assertEqual(entity.prop1, "aaa")
+
+        entity.update("prop2", "bbb")
+        self.assertEqual(entity.prop2, "bbb")
