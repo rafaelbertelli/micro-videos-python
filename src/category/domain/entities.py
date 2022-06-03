@@ -14,18 +14,12 @@ class Category(Entity):
     created_at: Optional[datetime] = field(
         default_factory=lambda: datetime.now())
 
-    def _update_name(self, name: str):
-        object.__setattr__(self, 'name', name)
-
-    def _update_description(self, description: str):
-        object.__setattr__(self, 'description', description)
-
     def update(self, name: str, description: Optional[str] = None):
-        self._update_name(name)
-        self._update_description(description)
+        self._set('name', name)
+        self._set('description', description)
 
     def activate(self):
-        object.__setattr__(self, 'is_active', True)
+        self._set('is_active', True)
 
     def deactivate(self):
-        object.__setattr__(self, 'is_active', False)
+        self._set('is_active', False)
