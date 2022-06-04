@@ -118,3 +118,32 @@ class TestUnitValidatorRules(unittest.TestCase):
                 ValidatorRules.values(data['value'], data['prop']).max_length(
                     data['max_length']),
                 ValidatorRules)
+
+    def test_boolen_rule(self):
+
+        invalid_data = [
+            {'value': 'qwerty', 'prop': 'name'},
+            {'value': 123, 'prop': 'name'},
+            {'value': '', 'prop': 'name'},
+        ]
+
+        for data in invalid_data:
+            msg = f"value: {data['value']} - prop: {data['prop']}"
+            with self.assertRaises(ValidationException, msg=msg) as assert_error:
+                ValidatorRules.values(
+                    data['value'], data['prop']
+                ).boolean()
+
+            self.assertEqual(
+                assert_error.exception.args[0], f"{data['prop']} must be a boolean")
+
+        valid_data = [
+            {'value': True, 'prop': 'name'},
+            {'value': False, 'prop': 'name'},
+            {'value': None, 'prop': 'name'},
+        ]
+
+        for data in valid_data:
+            self.assertIsInstance(
+                ValidatorRules.values(data['value'], data['prop']).boolean(),
+                ValidatorRules)
