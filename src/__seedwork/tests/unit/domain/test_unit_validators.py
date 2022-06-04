@@ -57,3 +57,64 @@ class TestUnitValidatorRules(unittest.TestCase):
             self.assertIsInstance(
                 ValidatorRules.values(data['value'], data['prop']).required(),
                 ValidatorRules)
+
+    def test_string_rule(self):
+
+        invalid_data = [
+            {'value': 123, 'prop': 'name'},
+            {'value': True, 'prop': 'name'},
+            {'value': False, 'prop': 'name'},
+            {'value': [], 'prop': 'name'},
+            {'value': {}, 'prop': 'name'},
+        ]
+
+        for data in invalid_data:
+            msg = f"value: {data['value']} - prop: {data['prop']}"
+            with self.assertRaises(ValidationException, msg=msg) as assert_error:
+                ValidatorRules.values(data['value'], data['prop']).string()
+
+            self.assertEqual(
+                assert_error.exception.args[0], f"{data['prop']} must be a string")
+
+        valid_data = [
+            {'value': 'Rafael', 'prop': 'name'},
+            {'value': '89', 'prop': 'name'},
+            {'value': 'True', 'prop': 'name'},
+            {'value': None, 'prop': 'name'},
+            {'value': '', 'prop': 'name'},
+        ]
+
+        for data in valid_data:
+            self.assertIsInstance(
+                ValidatorRules.values(data['value'], data['prop']).string(),
+                ValidatorRules)
+
+    def test_max_length_rule(self):
+
+        invalid_data = [
+            {'value': 'q' * 6, 'prop': 'name', 'max_length': 5},
+            {'value': 'q' * 7, 'prop': 'name', 'max_length': 6},
+        ]
+
+        for data in invalid_data:
+            msg = f"value: {data['value']} - prop: {data['prop']}"
+            with self.assertRaises(ValidationException, msg=msg) as assert_error:
+                ValidatorRules.values(
+                    data['value'], data['prop']
+                ).max_length(data['max_length'])
+
+            self.assertEqual(
+                assert_error.exception.args[0],
+                f"{data['prop']} must be less than {data['max_length']} characters")
+
+        valid_data = [
+            {'value': 'q' * 6, 'prop': 'name', 'max_length': 6},
+            {'value': 'q' * 7, 'prop': 'name', 'max_length': 10},
+            {'value': None, 'prop': 'name', 'max_length': 10},
+        ]
+
+        for data in valid_data:
+            self.assertIsInstance(
+                ValidatorRules.values(data['value'], data['prop']).max_length(
+                    data['max_length']),
+                ValidatorRules)
