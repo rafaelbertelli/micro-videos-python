@@ -35,4 +35,4 @@ class ValidatorRules():
         return self
 
 
-ValidatorRules.values("Rafael", "name").required().string().max_length(10)
+# ValidatorRules.values("Rafael", "name").required().string().max_length(10)

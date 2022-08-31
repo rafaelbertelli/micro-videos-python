@@ -147,3 +147,47 @@ class TestUnitValidatorRules(unittest.TestCase):
             self.assertIsInstance(
                 ValidatorRules.values(data['value'], data['prop']).boolean(),
                 ValidatorRules)
+
+    def test_throw_a_exception_when_combine_two_or_more_rules(self):
+        with self.assertRaises(ValidationException) as assert_error:
+            ValidatorRules.values(
+                None, 'prop').required().string().max_length(5)
+
+        self.assertEqual("prop is required", assert_error.exception.args[0])
+
+        with self.assertRaises(ValidationException) as assert_error:
+            ValidatorRules.values(5, 'prop').required().string().max_length(5)
+
+        self.assertEqual("prop must be a string",
+                         assert_error.exception.args[0])
+
+        with self.assertRaises(ValidationException) as assert_error:
+            ValidatorRules.values(
+                "t" * 8, 'prop').required().string().max_length(5)
+
+        self.assertEqual("prop must be less than 5 characters",
+                         assert_error.exception.args[0])
+
+        with self.assertRaises(ValidationException) as assert_error:
+            ValidatorRules.values(
+                None, 'prop').required().boolean()
+
+        self.assertEqual("prop is required",
+                         assert_error.exception.args[0])
+
+        with self.assertRaises(ValidationException) as assert_error:
+            ValidatorRules.values(
+                5, 'prop').required().boolean()
+
+        self.assertEqual("prop must be a boolean",
+                         assert_error.exception.args[0])
+
+    def test_valid_cases_for_combination_between_rules(self):
+        ValidatorRules("Test", "prop").required().string()
+        ValidatorRules("T" * 5, "prop").required().string().max_length(5)
+
+        ValidatorRules(True, "prop").required().boolean()
+        ValidatorRules(False, "prop").required().boolean()
+
+        expect_everything_pass = True
+        self.assertTrue(expect_everything_pass)
